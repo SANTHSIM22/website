@@ -86,3 +86,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+.nav{
+  background-color:white;
+}

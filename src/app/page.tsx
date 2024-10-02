@@ -1,32 +1,27 @@
 "use client";
-
-import { useState } from "react";
-import axios from "axios";
+import Hero from "@/components/Widget/hero";
 import Nav from "@/components/Widget/header";
+import About from "@/components/Widget/About";
+import Lenis from 'lenis'
 export default function Home() {
-  const [otp, setOtp] = useState("");
 
-  const sendVerificationEmail = async () => {
-    try {
-      await axios.post("/api/send-mail", {
-        email: "joywinbennis0987@gmail.com",
-        name: "Joywin",
-      });
-      alert("Verification email sent!");
-    } catch (error) {
-      console.error("Error sending email:", error);
-    }
-  };
+  const lenis = new Lenis()
 
-  return (
-         <>
-         <Nav/>
-<div className="bg-black h-screen w-screen ">
-
+  lenis.on('scroll', (e) => {
+    console.log(e)
+  })
   
-</div>
-
-
+  function raf(time) {
+    lenis.raf(time)
+    requestAnimationFrame(raf)
+  }
+  
+  requestAnimationFrame(raf)
+  return (
+        <>
+         <Nav/>
+         <Hero/>
+<About/>
          </>
   );
 }

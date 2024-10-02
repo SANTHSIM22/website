@@ -8,6 +8,9 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { FaLocationArrow } from "react-icons/fa";
 const Nav = () => {
+
+
+
   const menuToggle = useRef(null);
 
   const menuBar = gsap.timeline({ paused: true });
@@ -28,15 +31,33 @@ const Nav = () => {
         ease: "Power2.easeInOut",
       }, 'start');
 
-    tl.to('.logo', { x: -300 })
+    tl.to('.logo', { x: -300 },"go")
+       .to('.reg',{y:-300},"go")
       .to('.fullpage-menu', { duration: 0, display: 'block', ease: 'Expo.easeInOut' })
-      .from('.menu-bg span', { duration: 0.5, x: '100%', stagger: 0.1, ease: 'Expo.easeInOut' })
+      .from('.menu-bg span', { duration: 0.3, x: '100%', stagger: 0.1, ease: 'Expo.easeInOut' })
       .from('.header-2', { x: -300 })
-      .from('.listo', { duration: 0.3, x: '-50%', stagger: 0.2, opacity: 0 }, '-=0.5')
-      .from('.social-links li', { duration: 1, y: '-100%', opacity: 0, stagger: 0.1, ease: 'Expo.easeInOut' }, '-=0.5')
+      .from('.listo', { duration: 0.3, x: '-50%', stagger: 0.1, opacity: 0 }, '-=0.5')
+      .from('.social-links li', { duration: 0.3, y: '-100%', opacity: 0, stagger: 0.1   , ease: 'Expo.easeInOut' }, '-=0.5')
       .from('.hero-icon', { scale: 0, duration: 0.5 }, 'end')
       .from('.life', { x: 800, duration: 0.5 }, 'end');
 
+
+      // gsap.to('.hero-icon', {
+      //   repeat: -1,
+      //   keyframes: [
+      //     { translateX: 10, translateY: 10, duration: 0.5 },
+      //     { translateX: 10, translateY: -10, duration: 0.5 },
+      //     { translateX: -10, translateY: 10, duration: 0.5 },
+      //     { translateX: 10, translateY: -10, duration: 0.5 }
+      //   ],
+      //   yoyo: true
+      // });
+
+
+      ScrollTrigger.create({
+        trigger:""
+      });
+      
     menuBar.reverse();
     tl.reverse(); 
   }, [menuBar, tl]);
@@ -49,10 +70,11 @@ const Nav = () => {
   return (
 <>
 
-<header className='fixed z-10 left-0 top-0 w-full '>
+<header className='fixed z-10 left-0 top-0 w-full'>
   <div className="header-1 flex md:py-[20px] md:px-[30px] p-[30px]  justify-between  items-center  ">
     <div className="logo">
       <a href="">
+
       <Image
   src="/assets/Logo white.png"
   height={200}
@@ -62,6 +84,8 @@ const Nav = () => {
 
       </a>
 </div>
+<div className='flex justify-between items-center'>
+<li className='list-none overflow-hidden  leading-[1] font-bold text-white reg'><a href=""><button className='px-3 shadow-sm  py-4 lg:block hidden  mr-7 rounded-md  bg-[#EB0028]'>REGISTER</button></a></li>
 <button id='menuToggle' ref={menuToggle} onClick={handleClick} className="menu-toggle bg-transparent border-none cursor-pointer">
 <svg viewBox="0 0 12 10" className="hamburger" height="40px" width="40px">
                     <path d="M10,2 L2,2" className="bar-1 fill-none stroke-white s"></path>
@@ -70,11 +94,12 @@ const Nav = () => {
 
                 </svg>
 </button>
+</div>
   </div>
 </header>
 
 <section  className="fullpage-menu hidden fixed left-0 top-0 w-full  h-screen ">
-  <div className='header-2 fixed z-10 left-0 top-0 w-full  flex md:py-[20px] md:px-[30px] p-[30px]  justify-between  items-center'>
+  <div className='header-2 fixed z-30 left-0 top-0 w-full  flex md:py-[20px] md:px-[30px] p-[30px]  justify-between  items-center'>
   <Image
   src="/assets/TEDxSJEC_removed_background.webp"
   height={200}
@@ -82,11 +107,11 @@ const Nav = () => {
     alt="logo"
 />
   </div>
-  <div className="fullpage-menu-inner flex items-center  h-full px-[50px] py-[10px] md:px-[80px] md:py-[40px]">
+  <div className="fullpage-menu-inner flex items-center z-30  h-full px-[50px] py-[10px] md:px-[80px] md:py-[40px]">
     <div className="menu-bg h-full w-full  absolute  left-0 top-0">
-      <span className='bg-white block back w-full h-[34%]'></span>
-      <span className='bg-white block back w-full h-[34%]'></span>
-      <span className='bg-white block back w-full h-[34%]'></span>
+      <span className='bg-white   block back w-full h-[34%]'></span>
+      <span className='bg-white   block back w-full h-[34%]'></span>
+      <span className='bg-white   block back w-full h-[34%]'></span>
       
     </div>
     <nav className=' relative z-10 flex flex-row  w-full'>
@@ -98,12 +123,15 @@ const Nav = () => {
         <li className='listo list-none overflow-hidden mt-[20px] leading-[1] font-bold text-black  text-[40px] md:text-[50px]'><a href="">TEAM</a></li>
         <li className='listo list-none overflow-hidden mt-[20px] leading-[1] font-bold text-black  text-[40px] md:text-[50px]'><a href="">GALLARY</a></li>
         <li className='listo list-none overflow-hidden mt-[20px] leading-[1] font-bold text-black  text-[40px] md:text-[50px]'><a href="">CONTACT</a></li>
+        <li className='list-none listo overflow-hidden  leading-[1] font-bold text-white mt-[30px]'><a href=""><button className='px-8 shadow-sm  py-5 rounded-md  bg-[#EB0028]'>REGISTER</button></a></li>
+        
           </ul>
           </div>
     </nav>
     <div className='w-full flex flex-col items-center'>
-  <div className='self-center hero-icon lg:flex hidden flex-col'>
-    <Image className='mt-10' 
+      
+  <div className='lg:self-center  lg:flex hidden lg:flex-col'>
+    <Image className='mt-10 hero-icon' 
       src="/assets/Without line .PNG" 
       height={550} 
       width={550} 
@@ -111,11 +139,11 @@ const Nav = () => {
     />
   </div>
   <div className='lg:flex hidden text-nowrap  text-4xl relative bottom-32 justify-center items-center text-center'>
-    <h1 className='life uppercase'>Life - Explore What's Worth Living</h1>
+    <h1 className='life uppercase font-bold'>Life - Explore What's Worth Living</h1>
   </div>
 </div>
 
-    <div className="header-nav-footer absolute z-10 bottom-1 lg:bottom-10  w-full">
+    <div className="header-nav-footer absolute z-10 bottom-2 md:bottom-3 lg:bottom-10  w-full">
 <ul className="social-links  cursor-pointer list-none flex items-center w-full">
   <li className="text-[16px] md:text-[18px] text-black   hover:text-[#EB0028]">
     <a><FiInstagram size={36} className='hover:-translate-y-4 transition duration-300'  /></a>
