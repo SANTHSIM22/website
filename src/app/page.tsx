@@ -1,8 +1,7 @@
 "use client";
-import Hero from "@/components/Widget/hero";
 import Nav from "@/components/Widget/header";
-import About from "@/components/Widget/About";
 import Lenis from 'lenis'
+import Scrollprogres from "@/components/ui/scrollprogres";
 export default function Home() {
 
   const lenis = new Lenis()
@@ -11,17 +10,19 @@ export default function Home() {
     console.log(e)
   })
   
-  function raf(time) {
+  function raf(time: number) {
     lenis.raf(time)
     requestAnimationFrame(raf)
   }
   
   requestAnimationFrame(raf)
   return (
-        <>
+       <div>
+        <Scrollprogres/>
          <Nav/>
-         <Hero/>
-<About/>
-         </>
+         <div className="h-screen mt-32 p-16">
+         </div>
+         </div>
+  
   );
 }

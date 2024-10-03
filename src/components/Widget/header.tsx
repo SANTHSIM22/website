@@ -7,6 +7,7 @@ import { FiInstagram } from "react-icons/fi";
 import { FaLinkedinIn } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { FaLocationArrow } from "react-icons/fa";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 const Nav = () => {
 
 
@@ -54,9 +55,13 @@ const Nav = () => {
       // });
 
 
-      ScrollTrigger.create({
-        trigger:""
-      });
+      // ScrollTrigger.create({
+      //   trigger:".aboute",
+      //   markers:true,
+      //   toggleClass:"about",
+      //   start:"top 6 %",
+
+      // });
       
     menuBar.reverse();
     tl.reverse(); 
@@ -70,7 +75,7 @@ const Nav = () => {
   return (
 <>
 
-<header className='fixed z-10 left-0 top-0 w-full'>
+<header className='fixed z-10 aboute left-0 top-0 w-full'>
   <div className="header-1 flex md:py-[20px] md:px-[30px] p-[30px]  justify-between  items-center  ">
     <div className="logo">
       <a href="">
